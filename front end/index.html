@@ -1,0 +1,18 @@
+<button onclick="sendXMLRequestWithFetch()"> send requst</button>
+<script>
+async function sendXMLRequestWithFetch() {
+    const url = "http://127.0.0.1:8000/receive-xml/";
+    const xmlData = `<request><name>John Doe</name><email>john@example.com</email></request>`;
+
+    const response = await fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/xml",
+        },
+        body: xmlData,
+    });
+
+    const responseData = await response.text();
+    console.log("Response:", responseData);
+}
+</Script>
